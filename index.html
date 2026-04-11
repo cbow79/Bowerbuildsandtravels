@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Eulogy — Jane C. Smart</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { height: 100%; }
+  body {
+    height: 100%;
+    background: #000;
+    color: #fff;
+    font-family: Georgia, serif;
+    overflow: hidden;
+    -webkit-text-size-adjust: 100%;
+  }
+  #controls {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: rgba(15,15,15,0.97);
+    padding: 10px 14px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    z-index: 100;
+    border-bottom: 1px solid #333;
+    flex-wrap: wrap;
+  }
+  #controls button {
+    background: #2a2a2a;
+    color: #fff;
+    border: 1px solid #555;
+    padding: 12px 18px;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: inherit;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  #controls button:active { background: #555; }
+  #controls button.active { background: #c9a96e; color: #000; border-color: #c9a96e; }
+  .ctrl-group { display: flex; align-items: center; gap: 6px; }
+  .ctrl-group label { font-size: 13px; color: #aaa; white-space: nowrap; }
+  input[type=range] { width: 100px; accent-color: #c9a96e; touch-action: manipulation; }
+
+  #scroll-area {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
+  #prompter { padding: 180px 8vw 80vh 8vw; }
+  #prompter p { font-size: 42px; line-height: 1.65; margin-bottom: 1.4em; color: #f0f0f0; }
+  #prompter em { color: #c9a96e; font-style: italic; }
+  .title { font-size: 46px; font-weight: bold; text-align: center; margin-bottom: 0.3em; color: #c9a96e; }
+  .subtitle { font-size: 26px; text-align: center; color: #888; margin-bottom: 2em; }
+
+  #focusLine {
+    position: fixed; top: 38%; left: 0; right: 0;
+    height: 3px; background: rgba(201,169,110,0.35);
+    pointer-events: none; z-index: 50;
+  }
+  #tapZone {
+    position: fixed; top: 80px; left: 0; right: 0; bottom: 0;
+    z-index: 10;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+</style>
+</head>
+<body>
+
+<div id="controls">
+  <button id="playBtn" onclick="toggle()">&#9654; Start</button>
+  <button onclick="doReset()" style="font-size:20px">&#8634;</button>
+  <button onclick="jumpBack()" style="font-size:20px">&#8592; Back</button>
+  <div class="ctrl-group">
+    <label>Speed</label>
+    <input type="range" id="speed" min="5" max="80" value="28" oninput="updateSpeed(this.value)">
+  </div>
+  <div class="ctrl-group">
+    <label>Size</label>
+    <input type="range" id="size" min="28" max="72" value="42" oninput="updateSize(this.value)">
+  </div>
+</div>
+
+<div id="focusLine"></div>
+
+<div id="scroll-area">
+  <div id="prompter">
+    <div class="title">A Eulogy for Jane C. Smart</div>
+    <div class="subtitle">December 3, 1934 &ndash; April 6, 2026</div>
+
+    <p>Good afternoon. Before I get started, I just want to say I&rsquo;m going to do my very best to sum up my grandma&rsquo;s ninety-one years on this beautiful planet. And I promise you all &mdash; I&rsquo;m going to try to keep it under forty-five minutes.</p>
+    <p>For those who don&rsquo;t know me, I&rsquo;m one of Jane&rsquo;s grandsons &mdash; and standing up here today, I realize there&rsquo;s no version of my life that doesn&rsquo;t have my grandma in it. None of us who loved her can really say otherwise. She was just always <em>there</em>. Steady. Warm. Ready with a hug, a snack, and almost certainly an opinion.</p>
+    <p>Grandma was born Jane Doyle in Milwaukee in 1934. She married Harold Smart at Paris Corners Catholic Church in 1955, settled in Union Grove, and together they raised four daughters &mdash; Sandy, Linda, Andrea, and Laura. She worked hard her whole life, but anyone who knew her knows her real life&rsquo;s work was her family.</p>
+    <p>She and Grandpa were married for sixty-two years before he went ahead of her in 2017. And Grandma carried other losses too. We lost my Aunt Laura far too soon, to breast cancer in November of 2009 &mdash; a hole in Grandma&rsquo;s heart that never really closed. And six years ago, we lost my Uncle Frank, Andrea&rsquo;s husband, to prostate cancer. Frank was the one who stood up and delivered the eulogy at Grandpa Harold&rsquo;s funeral. He spoke for our family that day with such love and such grace. And so, standing here today, doing for Grandma what Frank did for Grandpa, I feel him with me. I think Grandma would like that.</p>
+    <p>I like to think they&rsquo;ve all been waiting at the door &mdash; Grandpa, Laura, and Frank &mdash; and this past Monday, Grandma finally got to walk through and hold them all again. That&rsquo;s the picture I keep in my head. That&rsquo;s the one that gives me peace.</p>
+    <p>If you ask me what I remember most about my grandma, it&rsquo;s not one specific moment. It&rsquo;s a <em>feeling</em>. Every single time any of us showed up to her house, Grandma would look at us like she had just opened a Christmas present. Her whole face would light up. She&rsquo;d give you a kiss right on the cheek and say your name like she&rsquo;d been waiting all week just to see you. And the wild thing is &mdash; she probably had been.</p>
+    <p>That was Grandma&rsquo;s superpower. She made every one of us feel like we were the most important person in the world the second we walked through her door.</p>
+    <p>And then there were the birthday calls. <em>The</em> birthday calls. Every grandchild, every great-grandchild, got that call from Grandma on their birthday. Like clockwork. She&rsquo;d sing the happy birthday song to you, every year, no matter how old you got. Honestly, your birthday wasn&rsquo;t even official until Grandma called. I think a lot of us are going to feel that one for a long time.</p>
+    <p>My mom Linda always said the truest thing about Grandma: she had the gift of gab. She could talk to <em>anyone</em>. Friends, strangers, the person behind her in line at the grocery store &mdash; it didn&rsquo;t matter. By the end of it, she probably knew your kids&rsquo; names, where you grew up, and what was wrong with your back. That was her gift. She made people feel seen.</p>
+    <p>And then there were the girls&rsquo; weeks up north &mdash; shopping, eating, and the casino. Always the casino. As Grandma got older and started using a walker, you&rsquo;d think that might slow her down. It did not. The second she got through those casino doors, she&rsquo;d take off like a bullet, straight to her favorite machine. And here&rsquo;s the thing &mdash; she always won. At least, that&rsquo;s what she told Grandpa.</p>
+    <p>My Aunt Sandy has a tradition she remembers that says everything about who Grandma was. The year Sandy&rsquo;s boys were finally old enough to go trick-or-treating on their own, they didn&rsquo;t want Mom tagging along anymore. And Sandy, living out in the county where no kids ever came to the door, suddenly had a quiet Halloween night on her hands. So she grabbed her little dog Lucy and drove over to Grandma&rsquo;s house to help hand out candy.</p>
+    <p>And that night became the tradition. Sandy and Grandma sat out on that porch year after year, talking and laughing, Grandma trying to guess what all the kids were dressed up as and getting it wrong half the time. The next year, Grandma called Sandy a full week before Halloween to tell her she&rsquo;d already bought Sandy&rsquo;s favorite beer &mdash; just in case a little bribe was needed to get her to come over again. It wasn&rsquo;t. Sandy was always going to come. But for years afterward, she never told Grandma she was coming ahead of time, because free beer is free beer.</p>
+    <p>The only downside, Sandy says, was that Grandpa would sneak her dog Lucy way too many snacks, and she&rsquo;d throw up on the ride home. Sandy calls it <em>a small price to pay to make your parents happy</em>.</p>
+    <p>And honestly, I think that one line is the whole story. That was Sandy. And that was Grandma too.</p>
+    <p>My Aunt Andrea &mdash; who, with my Uncle Frank, never had children of their own, but who always considered all of us <em>her</em> kids &mdash; shared a couple of stories that say everything about who Grandma was.</p>
+    <p>Grandma had a <em>very</em> unique sense of direction. This was way back before GPS, when you actually had to know where you were going. One time, Grandma and Andrea were out looking for a family member&rsquo;s house, and they couldn&rsquo;t find it &mdash; because the family had moved. Grandma reached up, tapped the side of her nose, and said, <em>&ldquo;My nose will find it.&rdquo;</em> And off they went. Three or four wrong turns later, somehow &mdash; <em>somehow</em> &mdash; they ended up at the right house. From that day forward, the family joke was that anytime Grandma got a little lost, she&rsquo;d just tap her nose and say, <em>&ldquo;My nose will find it.&rdquo;</em> And you know what? It usually did.</p>
+    <p>My favorite Andrea story, though, is this one. Andrea was visiting one day, and Grandma started telling her some juicy piece of news. Partway through, Grandma stopped, leaned in, and said very seriously, <em>&ldquo;Now Andrea, you can&rsquo;t tell anybody this.&rdquo;</em> And Andrea just looked at her and said, <em>&ldquo;Grandma. I&rsquo;m the one who told you. I told you not to tell anybody in the first place.&rdquo;</em> That was Grandma. Sweet, well-meaning, full of love, and just enough chaos to keep all of us laughing.</p>
+    <p>For us grandkids, the memories are everywhere. Pete still jokes about the four-inch TV she kept in the kitchen, and the toy trucks she had stashed in the spare bedroom just for us to play with. Scott remembers Grandma making him lunch every single day after school before work-study. Every. Single. Day. And Pete remembers the time he knocked an entire plate of mashed potatoes off the TV tray onto her living room carpet &mdash; and Grandma was the one who stepped in and saved him from Grandpa. She was always doing that. Always running interference. Always on our side.</p>
+    <p>My brother Adam says one of his most vivid memories is how Grandma was simply the best at taking care of you when you were sick. Mom would drop him off at Grandma&rsquo;s, and Grandma would tuck him into bed, turn on <em>The Price Is Right</em>, and bring him a piece of toast &mdash; and somehow, he always started to feel better. It was never a burden to her. It was a mission. Whatever was nagging at one of her grandkids, Grandma was going to fix it.</p>
+    <p>And then there&rsquo;s the photo. <em>The</em> photo. One day, the daughters decided that the grandsons were going to give Grandma a proper family picture &mdash; all of us, together, in color-coordinated outfits. We looked like dorks. But we did it. Because it was for Grandma. You didn&rsquo;t say no to Grandma.</p>
+    <p>After the photo, us boys headed to McDonald&rsquo;s &mdash; still in our matching outfits. And there were some kids ahead of us in line acting like jack wagons, giving us a hard time about how ridiculous we looked. Scott told them to just place their order. And Pete &mdash; God bless Pete &mdash; turned around and said, <em>&ldquo;Yeah, we wore this for our grandma.&rdquo;</em> Which, somehow, totally made us look like we meant business. The kids backed off.</p>
+    <p>And the truth is, we would have worn any goofy outfit, done anything she asked. Because the reason Grandma wanted that photo in the first place was so she could show her friends when they came over. She wanted them to see her grandkids. She was that proud of us.</p>
+    <p>And then there&rsquo;s my cousin Alex &mdash; the youngest grandson, Laura&rsquo;s son, and the one who carries Laura with him in everything he does. Alex experienced something none of the rest of us older grandkids did: he lost his mother when he was just sixteen years old.</p>
+    <p>Alex says one of his most vivid memories of Grandma is from when he was little. After bath time, Grandma would wrap him in a towel, sit him on her knee, and bounce him gently while she sang: <em>&ldquo;Alex is my darling, my darling, my darling &mdash; Alex is my darling, and I love him very much.&rdquo;</em> That was Grandma. For a kid who loses a parent young, a grandma&rsquo;s love isn&rsquo;t just love &mdash; it&rsquo;s a lifeline. And Grandma knew that. She wrapped Alex up not just in towels, but in love &mdash; and she let him know, every single time, how much she adored him and wanted the best for him.</p>
+    <p>Alex also remembers Grandma showing up at his Saturday bowling &mdash; even his state tournaments &mdash; though he&rsquo;s pretty sure part of her motivation was that she could go gamble with the girls afterward. Honestly, that&rsquo;s peak Grandma. Two birds, one stone. The woman had a system.</p>
+    <p>And Alex remembers something a lot of us remember too &mdash; how Grandma would stop over for a quick twenty or thirty minutes, and the very first thing out of her mouth would be, <em>&ldquo;Can I make you a sandwich? Do you want something to eat?&rdquo;</em> Every. Single. Time. It didn&rsquo;t matter if you&rsquo;d just eaten. Grandma was going to feed you. That was her love language. Food, hugs, and <em>&ldquo;are you sure you don&rsquo;t want a sandwich?&rdquo;</em></p>
+    <p>And then, of course, there&rsquo;s <em>the</em> story. The water bottle. My brother Kevin tells this one best. See, Grandma had this water bottle she carried around with her, and one day a few of us grandkids may have gotten a little thirsty and helped ourselves to a few sips. I&rsquo;m not going to get into the details. The cousins know. The aunts and uncles know. All I&rsquo;ll say is that it was <em>very</em> ironic how long those kids ended up napping that afternoon. Like &mdash; the kind of nap where the adults start checking to make sure everyone&rsquo;s still breathing. Grandma, wherever you are right now, I hope you&rsquo;re laughing. We sure are.</p>
+    <p>And then there&rsquo;s the gift Grandma gave us in her later years &mdash; though I&rsquo;m not sure she ever knew it was a gift. Grandma discovered Facebook. And bless her sweet heart, Grandma never quite figured out that there are just some things you don&rsquo;t post on Facebook. Things that sounded cute in her head, things she thought the family would love &mdash; and then suddenly the <em>whole world</em> was reading them. Every single one of us has a screenshot. Every single one of us has called somebody and said, <em>&ldquo;Did you see what Grandma just posted?&rdquo;</em> And every single one of us secretly looked forward to the next one.</p>
+    <p>I would give anything for one more Grandma Facebook post.</p>
+    <p>Here&rsquo;s what I want to say about my grandma, plainly. She loved her family fiercely. She made every single one of us feel like we were her favorite &mdash; and the wild thing is, I think we all actually were. And that love didn&rsquo;t stop at her kids, or her grandkids. It reached all the way down to her great-grandkids and even her great-great-grandkids. Four generations of kids who knew exactly what it felt like to be adored by Jane Smart. Not many people leave a legacy like that.</p>
+    <p>She made lunches. She made memories. She made room. That&rsquo;s what Grandma did. For ninety-one years.</p>
+    <p>Losing her hurts. But standing here today, looking out at all of you, I don&rsquo;t feel like she&rsquo;s gone. I feel like she&rsquo;s <em>everywhere</em>. In every story we just shared. In every laugh. In every margarita ordered at lunch. In every birthday song. In every kid who feels better the second their grandma walks into the room.</p>
+    <p>Grandma, thank you. Thank you for the casino runs and the porch nights and the toy trucks and the sandwiches. Thank you for the birthday calls. Thank you for tapping your nose and just <em>going</em>. Thank you for that Christmas-present face every time we walked in the door. Thank you for sixty-two years of loving Grandpa, and for a lifetime of loving the rest of us.</p>
+    <p>Go find Grandpa. Go find Laura. Go find Frank. Tell them we said hi. We&rsquo;ll take it from here &mdash; and we&rsquo;ll make all of you proud.</p>
+    <p style="text-align:center; color:#c9a96e; font-size:48px; margin-top:1em;">We love you, Grandma. &#10084;&#65039;</p>
+    <div style="height:80vh;"></div>
+  </div>
+</div>
+
+<div id="tapZone" ontouchend="tapToggle(event)"></div>
+
+<script>
+  var scrollArea = document.getElementById('scroll-area');
+  var playBtn    = document.getElementById('playBtn');
+  var running    = false;
+  var rafId      = null;
+  var pxPerFrame = 0.9;
+
+  function getSpeed() {
+    return parseInt(document.getElementById('speed').value) / 30;
+  }
+
+  function step() {
+    if (!running) return;
+    scrollArea.scrollTop += pxPerFrame;
+    rafId = requestAnimationFrame(step);
+  }
+
+  function toggle() {
+    running = !running;
+    if (running) {
+      pxPerFrame = getSpeed();
+      playBtn.textContent = '\u23F8 Pause';
+      playBtn.classList.add('active');
+      rafId = requestAnimationFrame(step);
+    } else {
+      playBtn.textContent = '\u25B6 Start';
+      playBtn.classList.remove('active');
+      cancelAnimationFrame(rafId);
+    }
+  }
+
+  function tapToggle(e) {
+    e.preventDefault();
+    toggle();
+  }
+
+  function doReset() {
+    if (running) toggle();
+    scrollArea.scrollTop = 0;
+  }
+
+  function jumpBack() {
+    scrollArea.scrollTop = Math.max(0, scrollArea.scrollTop - window.innerHeight * 0.6);
+  }
+
+  function updateSpeed(val) {
+    pxPerFrame = parseInt(val) / 30;
+  }
+
+  function updateSize(val) {
+    document.querySelectorAll('#prompter p').forEach(function(p) {
+      p.style.fontSize = val + 'px';
+    });
+  }
+
+  // Wake Lock to prevent screen sleep (Safari 16.4+)
+  if ('wakeLock' in navigator) {
+    navigator.wakeLock.request('screen').catch(function(){});
+  }
+</script>
+
+</body>
+</html>
